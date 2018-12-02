@@ -1,0 +1,79 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li class="current">
+                    <a href="{{ buildUrl('/dong_tai/new_speech') }}">新建讲座</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row m-t  wrap_speech_set">
+	<div class="col-lg-12">
+		<h2 class="text-center">新建讲座信息</h2>
+		<div class="form-horizontal m-t m-b">
+			<div class="form-group">
+				<label class="col-lg-2 control-label">标题:</label>
+				<div class="col-lg-10">
+					<input type="text" name="title" class="form-control" placeholder="请输入标题" value="">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">当前老师:</label>
+				<div class="col-lg-10">
+					<input type="text" name="teacher" class="form-control" placeholder="请输入老师名字" value="">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">联系方式:</label>
+				<div class="col-lg-10">
+					<input type="text" name="email" class="form-control" placeholder="请输入老师的邮箱" value="">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">老师简介:</label>
+				<div class="col-lg-10">
+					<textarea type="text" name="teacher_intro" class="form-control" autocomplete="off" placeholder="请输入老师的相关介绍" value=""></textarea>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">讲座简介:</label>
+				<div class="col-lg-10">
+					<textarea  name="speech_intro" class="form-control" autocomplete="off" placeholder="请输入相关活动的相关信息" value=""></textarea>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">设定时间:</label>
+				<div class="col-lg-10">
+					<input type="datetime-local" name="time" class="form-control" autocomplete="off" placeholder="请输入相关活动时间" value="">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">设置地点:</label>
+				<div class="col-lg-10">
+					<input type="text" name="address" class="form-control" autocomplete="off" placeholder="请输入相关活动地点" value="">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<div class="col-lg-4 col-lg-offset-2">
+                    <input type="hidden" name="id" value="0">
+					<button class="btn btn-w-m btn-outline btn-primary save">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{{ buildStaticUrl('/js/dong_tai/new_speech.js') }}"></script>>
+{% endblock %}

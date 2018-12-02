@@ -1,0 +1,60 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li class="current">
+                    <a href="{{ buildUrl('/new_set') }}">新建公告</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row m-t  wrap_account_set">
+	<div class="col-lg-12">
+		<h2 class="text-center">新建公告</h2>
+		<div class="form-horizontal m-t m-b">
+			<div class="form-group">
+				<label class="col-lg-2 control-label">标题:</label>
+				<div class="col-lg-10">
+					<input type="text" name="title" class="form-control" placeholder="请输入标题" value="">
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">地点:</label>
+				<div class="col-lg-10">
+                    <select id="location" class="form-control select2-hidden-accessible" tabindex="-1"
+                            aria-hidden="true">
+                        <option value="0">请选择图书馆</option>
+                       {% for item in lib_location %}
+                           <option value="{{ item }}">{{ lib_location[item] }}</option>
+                       {% endfor %}
+                    </select>
+                </div>
+			</div>
+
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">公告内容:</label>
+				<div class="col-lg-10">
+					<textarea  name="content" class="form-control" autocomplete="new-password" placeholder="请输入公告的具体内容，注意：每条公告在140字以内" value=""></textarea>
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<div class="col-lg-4 col-lg-offset-2">
+                    <input type="hidden" name="id" value="0">
+					<button class="btn btn-w-m btn-outline btn-primary save">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{{ buildStaticUrl('/js/news_lib/new_set.js') }}"></script>>
+{% endblock %}

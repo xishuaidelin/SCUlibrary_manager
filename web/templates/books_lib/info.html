@@ -1,0 +1,105 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li class="current">
+                    <a href="{{ buildUrl('') }}">详细信息</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .wrap_info img {
+        width: 70%;
+    }
+</style>
+<div class="row m-t wrap_info">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="m-b-md">
+                    <a class="btn btn-outline btn-primary pull-right" href="{{ buildUrl('/books_lib/new_set') }}?id={{book_info.id}}">
+                        <i class="fa fa-pencil"></i>编辑
+                    </a>
+                    <h2>书籍信息</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p><img src="{{ buildImageUrl( book_info.image ) }}" style="width: 140px;height: 180px;"></p>
+                <p class="m-t">书籍名：{{book_info.title}}</p>
+                <p>作者：{{book_info.author}}</p>
+                <p>出版社：{{book_info.press}}</p>
+                <p>简介：{{book_info.intro}}</p>
+                <p>分类：{{book_info.book_type}}</p>
+                <p>所在馆：{{book_info.location}}</p>
+                <p>馆内数量：{{book_info.current_amount}}</p>
+            </div>
+        </div>
+        <div class="row m-t">
+            <div class="col-lg-12">
+                <div class="panel blank-panel">
+                    <div class="panel-heading">
+                        <div class="panel-options">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab-1" data-toggle="tab" aria-expanded="false">相关数据</a>
+                                </li>
+                                <li>
+                                    <a href="#tab-2" data-toggle="tab" aria-expanded="true">变更记录</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab-1">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>累计查询次数</th>
+                                        <th>累计预约次数</th>
+                                        <th>当前外借数量</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tbody>
+                                    <tr>
+                                        <td>999</td>
+                                        <td>25</td>
+                                        <td>{{book_info.update_amount-book_info.current_amount}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="tab-2">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>变更</th>
+                                        <th>备注</th>
+                                        <th>时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>修改出版社为未知</td>
+                                        <td>2018-11-26 20:00:02</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

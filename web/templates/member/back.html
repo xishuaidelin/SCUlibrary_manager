@@ -1,0 +1,42 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+{% include "common/tab_button4.html"%}
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-bordered m-t">
+            <thead>
+            <tr>
+                <th>封面</th>
+                <th>书名</th>
+                <th>借书人</th>
+                <th>借书日期</th>
+                <th>应还日期</th>
+            </tr>
+            </thead>
+            <tbody>
+             {% if list %}
+                {% for item in list %}
+
+            <tr>
+                <!--web/static/images/upload/20181127/609a03abfbe34431afb1ab62467814bf.png-->
+                <td>
+                    <img alt="image" class="img" src="{{ buildImageUrl('20181127/609a03abfbe34431afb1ab62467814bf.png') }}" style="width: 40px;height: 40px;">
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.lending_name}}</td>
+                <td>{{item.lending_time}}</td>
+                <td>{{item.shouldback_time}}</td>
+            </tr>
+             {% endfor %}
+             {% else %}
+            <tr>
+                <td colspan="5">暂无数据~~</td>
+            </tr>>
+            {% endif %}
+            </tbody>
+        </table>
+
+        {% include 'common/pagenation.html' %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+{% include "common/tab_stat.html" %}
+<div class="row m-t">
+    <div class="col-lg-12" id="container" style="height: 400px;" data-highcharts-chart="0">
+            图标使用Highchart
+    </div>
+    <div class="col-lg-12 m-t">
+        <form class="form-inline" id="search_form_wrap">
+            <div class="row p-w-m">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" placeholder="请选择开始时间" name="date_from" class="form-control"
+                               value="2018-05-08">
+                    </div>
+                </div>
+                <div class="form-group m-r m-l">
+                    <label>至</label>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" placeholder="请选择结束时间" name="date_to" class="form-control" value="2018-06-07">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-w-m btn-outline btn-primary search">搜索</a>
+                </div>
+            </div>
+            <hr>
+        </form>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="m-b-md">
+					<h2>实时借还动态</h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered m-t">
+            <thead>
+            <tr>
+                <th>时间</th>
+                <th>读者名称</th>
+                <th>流通事务</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+
+                <td>lending_info.</td>
+                <td>lending_info.</td>
+                <td>lending_info.</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}
+{% block js%}
+<script src="{{ buildStaticUrl('/plugins/highcharts/highcharts.js') }}"></script>
+<script src="{{ buildStaticUrl('/js/chart.js') }}"></script>
+<script src="{{ buildStaticUrl('/js/stat/index.js') }}"></script>
+{% endblock %}

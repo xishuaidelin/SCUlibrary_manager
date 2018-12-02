@@ -1,0 +1,145 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                {% if info  %}
+                <li class="current">
+                    <a href="{{ buildUrl('/books_lib/new_set') }}">信息修改</a>
+                </li>
+                {% else %}
+                <li class="current">
+                    <a href="{{ buildUrl('/books_lib/new_set') }}">新书添加</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row mg-t20 wrap_food_set" style="">
+    <div class="col-lg-12" style="">
+        <h2 class="text-center">书籍信息编辑</h2>
+        <div class="form-horizontal m-t" style="">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">书名:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" placeholder="请输入书名" name="title" value="{{info.title}}">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">作者:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" placeholder="请输入作者" name="author" value="{{info.author}}">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">出版社:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" placeholder="请输入出版社" name="press" value="{{info.press}}">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">封面图:</label>
+                <div class="col-lg-10">
+                    <form class="upload_pic_wrap" target="upload_file" enctype="multipart/form-data" method="POST" action="{{ buildUrl('/upload/pic') }}">
+                        <div class="upload_wrap pull-left">
+                            <i class="fa fa-upload fa-2x"></i>
+                            <input type="file" name="pic" accept="image/png, image/jpeg, image/jpg,image/gif">
+                        </div>
+                        {% if info and info.image %}
+                        <span class="pic-each">
+                            <img src="{{ buildImageUrl( info.image ) }}"/>
+                            <span class="fa fa-times-circle del del_image" data="{{ info.image }}"></span>
+                        </span>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">分类:</label>
+                <div class="col-lg-10">
+                    <select name="cat_id" class="form-control select2-hidden-accessible" tabindex="-1"
+                            aria-hidden="true">
+                        <option value="0">请选择分类</option>
+                       {% for item in book_types %}
+                           <option value="{{ item }}"{%  if item == info.book_type %} selected {% endif %}>{{ book_types[item] }}</option>
+                       {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group" style="">
+                <label class="col-lg-2 control-label">简介:</label>
+                <div class="col-lg-10">
+                   <!-- <textarea  id="editor"  name="summary" style="height: 300px;"></textarea>-->
+                    <textarea  name="intro" class="form-control" value="">{{info.intro}}</textarea>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">所在馆:</label>
+                <div class="col-lg-10">
+                    <select id="location" class="form-control select2-hidden-accessible" tabindex="-1"
+                            aria-hidden="true">
+                        <option value="0">请选择图书馆</option>
+                       {% for item in lib_location %}
+                           <option value="{{ item }}">{{ lib_location[item] }}</option>
+                       {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                {% if info  %}
+                <label class="col-lg-2 control-label">当前数量:</label>
+                <div class="col-lg-2">
+                    <input type="text" name="amount" class="form-control" value="{{info.current_amount}}">
+                </div>
+                {% else %}
+                <label class="col-lg-2 control-label">上新数量:</label>
+                <div class="col-lg-2">
+                    <input type="text" name="amount" class="form-control" placeholder="请输入上新数量" value="">
+                </div>
+                {% endif %}
+
+            </div>
+            <!--  这段不用,以后改成标签时进行参考
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">标签:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" name="tags" value="">
+                </div>
+            </div>-->
+            <!--这里用来传递东西的 因为在layout_main.html中已经做好了传值
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <input type="hidden" name="domain" value="http://localhost:8999">
+                    <input type="hidden" name="prefix_url" value="/static/images/upload/">
+                </div>
+            </div>-->
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <input type="hidden" name="id" value="{{info.id}}">
+                    <button class="btn btn-w-m btn-outline btn-primary save">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<iframe name="upload_file" class="hide"></iframe>
+{% endblock %}
+{% block js %}
+
+<script src="{{ buildStaticUrl( '/plugins/ueditor/ueditor.config.js' ) }}"></script>
+<script src="{{ buildStaticUrl( '/plugins/ueditor/ueditor.all.min.js' ) }}"></script>
+<script src="{{ buildStaticUrl( '/plugins/ueditor/lang/zh-cn/zh-cn.js' ) }}"></script>
+<script src="{{ buildStaticUrl( '/js/books_lib/new_set.js' ) }}"></script>
+{% endblock %}

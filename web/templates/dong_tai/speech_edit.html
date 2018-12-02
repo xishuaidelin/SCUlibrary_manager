@@ -1,0 +1,79 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li class="current">
+                    <a href="{{ buildUrl('/dong_tai/speech_edit') }}">更改讲座信息</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row m-t  wrap_speech_edit">
+	<div class="col-lg-12">
+		<h2 class="text-center">信息修改</h2>
+		<div class="form-horizontal m-t m-b">
+			<div class="form-group">
+				<label class="col-lg-2 control-label">当前标题:</label>
+				<div class="col-lg-10">
+					<input type="text" name="title" class="form-control" placeholder="" value="{{info.title}}">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">选定老师:</label>
+				<div class="col-lg-10">
+					<input type="text" name="teacher" class="form-control" placeholder="" value="{{info.teacher}}">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">联系邮箱:</label>
+				<div class="col-lg-10">
+					<input type="text" name="email" class="form-control" placeholder="" value="{{info.teacher_conn}}">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">老师简介:</label>
+				<div class="col-lg-10">
+					<textarea type="text" name="teacher_intro" class="form-control" autocomplete="off" placeholder=""></textarea>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">讲座简介:</label>
+				<div class="col-lg-10">
+					<textarea  name="speech_intro" class="form-control" autocomplete="off" placeholder=""></textarea>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">时间修改:</label>
+				<div class="col-lg-10">
+					<input type="datetime-local" name="time" class="form-control" autocomplete="off" placeholder="" value="{{info.speeche_time}}">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">地点修改:</label>
+				<div class="col-lg-10">
+					<input type="text" name="address" class="form-control" autocomplete="off" placeholder="" value="{{info.address}}">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<div class="col-lg-4 col-lg-offset-2">
+                    <input type="hidden" name="id" value="{{info.id}}">
+					<button class="btn btn-w-m btn-outline btn-primary save">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{{ buildStaticUrl('/js/dong_tai/speech_edit.js') }}"></script>>
+{% endblock %}

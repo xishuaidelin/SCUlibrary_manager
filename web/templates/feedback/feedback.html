@@ -1,0 +1,88 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+{% include "common/tab_button5.html"%}
+<div class="row">
+    <div class="col-lg-12">
+        <form class="form-inline wrap_search">
+            <div class="row  m-t p-w-m">
+                <div class="form-group">
+                    <select name="status" class="form-control inline">
+                        <option value="-1">状态</option>
+                        {% for tmp_key in status_mapping %}
+                        <option value="{{tmp_key}}"{% if tmp_key == search_con['status']  %} selected {% endif %}>{{status_mapping[tmp_key]}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="location" class="form-control inline">
+                        <option value="-1">地点</option>
+                        {% for tmp_key in lib_location %}
+                        <option value="{{tmp_key}}"{% if tmp_key == search_con['location']  %} selected {% endif %}>{{lib_location[tmp_key]}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="hidden" name="p" value="{{ search_con['p'] }}">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn  btn-primary search">
+                                <i class="fa fa-search"></i>搜索
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <table class="table table-bordered m-t">
+            <thead>
+            <tr>
+                <th>反馈主题</th>
+                <th>地点</th>
+                <th>反馈时间</th>
+                <th>操作</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if list %}
+                {% for item in list %}
+            <tr>
+                {% if item.status==1 %}
+                <td>{{item.title}}</td>
+                <td>{{item.location}}</td>
+                <td>{{item.created_time}}</td>
+                <td>
+                    <a href="{{ buildUrl('/feedback/feed_info') }}?id={{item.id}}">
+                        <i class="fa fa-eye fa-lg"></i>
+                    </a>
+                    <a class="m-l remove" href="javascript:void(0);" data="{{ item.id  }}">
+                        <i class="fa fa-trash fa-lg"></i>
+                    </a>
+                </td>
+                <td>正常</td>
+                {% else %}
+                <td>{{item.title}}</td>
+                <td>{{item.location}}</td>
+                <td>{{item.created_time}}</td>
+                <td>
+                    <a href="{{ buildUrl('/feedback/feed_info') }}?id={{item.id}}">
+                        <i class="fa fa-eye fa-lg"></i>
+                    </a>
+                </td>
+                <td>已删除</td>
+                    {% endif %}
+            </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="5">暂无数据~~</td></tr>
+            {% endif %}
+            </tbody>
+        </table>
+        {% include 'common/pagenation.html' %}
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{{ buildStaticUrl('/js/feedback/feedback.js') }}"></script>
+{% endblock %}

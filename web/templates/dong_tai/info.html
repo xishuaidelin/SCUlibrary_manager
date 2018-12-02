@@ -1,0 +1,77 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li class="current">
+                    <a href="{{ buildUrl('/dong_tai/info') }}">讲座信息</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row m-t">
+	<div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="m-b-md">
+					<a class="btn btn-outline btn-primary pull-right" href="{{ buildUrl('/dong_tai/set') }}">
+                        <i class="fa fa-pencil"></i>编辑
+                    </a>
+					<h2>讲座信息</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--
+            <div class="col-lg-2 text-center">
+                <img class="img-circle circle-border" src="{{ buildStaticUrl('/images/common/avatar.png') }}" width="100px" height="100px">
+            </div>-->
+            <div class="item_info">
+
+                <div class="col-lg-10">
+                    <p>这里是标题</p>
+                    <p>老师：lisa</p><p>联系方式：18380198303</p>
+                    <p>老师简介：lisa是四川大学特聘教授，是出色的四国经济语言学家，拥有丰富的外交商业相关知识。</p>
+                    <p>讲座简介：第一，要明确参加的对象。要弄清楚参加讲座的都是什么人？我曾经讲过，写讲话稿就好比如到什么山唱什么歌，不能脱离受众，受众即是下面的听众，参会人员。写出来的讲话稿不能放之四海而皆准，放之四海而皆准的这种文稿就缺乏针对性。</p>
+                    <p>时间：2018-10-29</p><p>地点：江安图书馆大讲堂</p>
+                    <p>预约人数：</p>
+                </div>
+            </div>
+        </div>
+        <div class="row m-t">
+            <div class="col-lg-12">
+                <div class="panel blank-panel">
+                    <div class="panel-heading">
+                        <div class="panel-options">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="javascript:void(0);" data-toggle="tab" aria-expanded="false">访问记录</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>访问时间</th>
+                                            <th>访问Url</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									<tr><td colspan="2">暂无数据</td></tr>
+                                     </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}

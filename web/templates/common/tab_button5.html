@@ -1,0 +1,14 @@
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li  {% if current=="index" %}class="current" {% endif %}>
+                    <a href="{{ buildUrl('/feedback/index') }}">读者来稿</a>
+                </li>
+                <li  {% if current=="feedback" %}class="current" {% endif %}>
+                    <a href="{{ buildUrl('/feedback/feedback') }}">反馈中心</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

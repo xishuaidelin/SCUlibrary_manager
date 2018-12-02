@@ -1,0 +1,14 @@
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li  {% if current=="Academic_communication" %}class="current" {% endif %}>
+                    <a href="{{ buildUrl('/dong_tai/index') }}">学术交流</a>
+                </li>
+                <li  {% if current=="speeches_management" %}class="current" {% endif %}>
+                    <a href="{{ buildUrl('/dong_tai/speeches') }}">讲座管理</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
